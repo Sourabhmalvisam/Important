@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Details</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      /* Center align the content */
+      .topg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .movie-details {
+        text-align: center;
+      }
+      .movie-details img {
+        max-width: 50%;
+        height: auto;
+      }
+      .search-form {
+        width: 70%;
+        margin: auto; /* Center the form horizontally */
+        display: flex; /* Use flexbox for centering */
+        justify-content: center; /* Center the form horizontally */
+      }
+      .search-input {
+        width: 80%; /* Adjust the width of the search input */
+      }
+      .hover-speech {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <form
+          class="form-inline search-form"
+          onsubmit="event.preventDefault();"
+        >
+          <input
+            class="form-control mr-sm-2 search-input"
+            id="searchInput"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-success my-2 my-sm-0"
+            type="button"
+            onclick="voiceSearch()"
+          >
+            Voice Search
+          </button>
+          <div class="dropdown-divider"></div>
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <div class="topg">
+      <div class="container-fluid">
+        <div class="movie-details">
+          <img src="image.jpg" alt="Movie Poster" />
+          <h2>Movie Title</h2>
+          <p>Genre: Action</p>
+          <p>Cast: Actor 1, Actor 2, Actor 3</p>
+          <p>Director: Director Name</p>
+          <p>Release Date: January 1, 2024</p>
+          <div>
+            <span
+              class="hover-speech"
+              onmouseover="speakText(this.textContent)"
+            >
+              Hello World</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      function speakText(text) {
+        setTimeout(function () {
+          const utterance = new SpeechSynthesisUtterance(text);
+          window.speechSynthesis.speak(utterance);
+        }, 1000);
+      }
+
+      function voiceSearch() {
+        const recognition =
+          new webkitSpeechRecognition() || new SpeechRecognition();
+        recognition.lang = "en-US";
+        recognition.start();
+
+        recognition.onresult = function (event) {
+          const transcript = event.results[0][0].transcript;
+          document.getElementById("searchInput").value = transcript;
+        };
+
+        recognition.onend = function () {
+          recognition.stop();
+        };
+      }
+    </script>
+  </body>
+</html>
