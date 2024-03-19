@@ -8,14 +8,18 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Font Awesome -->
     <style>
       .movie-details {
         padding: 20px;
         text-align: center;
       }
       .movie-details img {
-        max-width: 50%;
-        height: auto;
+        max-width: 100%;
       }
       .table-container {
         padding: 20px;
@@ -36,6 +40,16 @@
       .hover-speech {
         cursor: pointer;
       }
+      .rounded-label {
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #fff;
+        background-color: #808080;
+        border-radius: 1rem; /* Rounded edges */
+        text-decoration: none; /* Remove default underline */
+      }
     </style>
   </head>
   <body>
@@ -53,11 +67,13 @@
             aria-label="Search"
           />
           <button
-            class="btn btn-outline-success my-2 my-sm-0"
+            class="btn btn-outline-primary mr-2"
             type="button"
+            id="voiceSearchIcon"
             onclick="voiceSearch()"
           >
-            Voice Search
+            <i class="fas fa-microphone-alt"></i>
+            <!-- Font Awesome microphone icon -->
           </button>
           <div class="dropdown-divider"></div>
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
@@ -69,89 +85,136 @@
 
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <div class="movie-details">
-            <img src="image.jpg" alt="Movie Poster" />
-            <h2>Movie Title</h2>
-            <p>Genre: Action</p>
-            <p>Cast: Actor 1, Actor 2, Actor 3</p>
-            <p>Director: Director Name</p>
-            <p>Release Date: January 1, 2024</p>
-            <div>
-              <span
-                class="hover-speech"
-                onmouseover="speakText(this.textContent)"
-              >
-                Hello World</span
-              >
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 mb-3">
-              <div class="card blue-card">
-                <div class="card-body">Card 1 Content</div>
+        <div class="col-lg-6 movie-details">
+          <div class="card">
+            <div class="row p-2">
+              <div class="col-6">
+                <img src="image.jpg" alt="Movie Poster" />
+              </div>
+              <div class="col-6">
+                <h2>Movie Title</h2>
+                <p>Genre: Action</p>
+                <p>Cast: Actor 1, Actor 2, Actor 3</p>
+                <p>Director: Director Name</p>
+                <p>Release Date: January 1, 2024</p>
               </div>
             </div>
-            <div class="col-md-4 mb-3">
-              <div class="card blue-card">
-                <div class="card-body">Card 2 Content</div>
+
+            <div class="mt-2">
+              <div class="row">
+                <div class="col-md-4 mb-3 mt-3">
+                  <div class="rounded-label">Input Text 1</div>
+                </div>
+                <div class="col-md-4 mb-3 mt-3">
+                  <div class="rounded-label">Input Text 2</div>
+                </div>
+                <div class="col-md-4 mb-3 mt-3">
+                  <div class="rounded-label">Input Text 3</div>
+                </div>
               </div>
             </div>
-            <div class="col-md-4 mb-3">
-              <div class="card blue-card">
-                <div class="card-body">Card 3 Content</div>
+
+            <div class="container">
+              <h2>Description</h2>
+              <button
+                style="background-color: #808080; color: white"
+                class="btn m-3"
+                type="button"
+                data-toggle="collapse"
+                data-target="#descriptionContent"
+                aria-expanded="false"
+                aria-controls="descriptionContent"
+              >
+                Show Description
+              </button>
+              <div class="collapse" id="descriptionContent">
+                <div
+                  class="card card-body collapse-content mb-3 hover-speech"
+                  onmouseenter="speakText(this.textContent)"
+                  onmouseleave="stopSpeaking()"
+                >
+                  There once lived an old man and an old woman who were peasants
+                  and had to work hard to earn their daily bread. The old man
+                  used to go to fix fences and do other odd jobs for the farmers
+                  around, and while he was gone the old woman, his wife, did the
+                  work of the house and worked in their own little plot of land.
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="col-lg-6 table-container">
-          <table class="table table-bordered text-center">
+          <table class="table table-bordered text-center table-hover">
             <thead>
               <tr>
-                <th>Column 2</th>
-                <th>Column 3</th>
+                <th>CATEGORY</th>
+                <th>CONTENT DESCRIPTOR</th>
               </tr>
             </thead>
             <tbody>
               <tr>
+                <th>Data 1</th>
+                <td>Data 2</td>
+              </tr>
+              <tr>
+                <th>Data 3</th>
+                <td>Data 4</td>
+              </tr>
+              <tr>
+                <th>Data 5</th>
+                <td>Data 6</td>
+              </tr>
+              <tr>
+                <th>Data 7</th>
+                <td>Data 8</td>
+              </tr>
+              <tr>
+                <th>Data 9</th>
+                <td>Data 10</td>
+              </tr>
+              <tr>
                 <td>Data 11</td>
                 <td>Data 12</td>
+              </tr>
+              <tr>
+                <td>Data 13</td>
+                <td>Data 14</td>
+              </tr>
+              <tr>
+                <td>Data 15</td>
+                <td>Data 16</td>
+              </tr>
+              <tr>
+                <td>Data 17</td>
+                <td>Data 18</td>
+              </tr>
+              <tr>
+                <td>Data 19</td>
+                <td>Data 20</td>
               </tr>
               <tr>
                 <td>Data 21</td>
                 <td>Data 22</td>
               </tr>
               <tr>
+                <td>Data 23</td>
+                <td>Data 24</td>
+              </tr>
+              <tr>
+                <td>Data 25</td>
+                <td>Data 26</td>
+              </tr>
+              <tr>
+                <td>Data 27</td>
+                <td>Data 28</td>
+              </tr>
+              <tr>
+                <td>Data 29</td>
+                <td>Data 30</td>
+              </tr>
+              <tr>
                 <td>Data 31</td>
                 <td>Data 32</td>
-              </tr>
-              <tr>
-                <td>Data 41</td>
-                <td>Data 42</td>
-              </tr>
-              <tr>
-                <td>Data 51</td>
-                <td>Data 52</td>
-              </tr>
-              <tr>
-                <td>Data 61</td>
-                <td>Data 62</td>
-              </tr>
-              <tr>
-                <td>Data 71</td>
-                <td>Data 72</td>
-              </tr>
-              <tr>
-                <td>Data 81</td>
-                <td>Data 82</td>
-              </tr>
-              <tr>
-                <td>Data 91</td>
-                <td>Data 92</td>
-              </tr>
-              <tr>
-                <td>Data 101</td>
-                <td>Data 102</td>
               </tr>
             </tbody>
           </table>
@@ -164,10 +227,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
       function speakText(text) {
-        setTimeout(function () {
-          const utterance = new SpeechSynthesisUtterance(text);
-          window.speechSynthesis.speak(utterance);
-        }, 1000);
+        const utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance);
+      }
+      function stopSpeaking() {
+        window.speechSynthesis.cancel();
       }
 
       function voiceSearch() {

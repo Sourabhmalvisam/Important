@@ -8,21 +8,17 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <style>
       .movie-details {
-        padding: 20px;
         text-align: center;
       }
       .movie-details img {
-        max-width: 50%;
+        max-width: 100%;
         height: auto;
-      }
-      .table-container {
-        padding: 20px;
-      }
-      .blue-card {
-        background-color: #007bff;
-        color: #fff;
       }
       .search-form {
         width: 70%;
@@ -53,11 +49,13 @@
             aria-label="Search"
           />
           <button
-            class="btn btn-outline-success my-2 my-sm-0"
+            class="btn btn-outline-primary mr-2"
             type="button"
+            id="voiceSearchIcon"
             onclick="voiceSearch()"
           >
-            Voice Search
+            <i class="fas fa-microphone-alt"></i>
+            <!-- Font Awesome microphone icon -->
           </button>
           <div class="dropdown-divider"></div>
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
@@ -67,94 +65,16 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <div class="movie-details">
-            <img src="image.jpg" alt="Movie Poster" />
-            <h2>Movie Title</h2>
-            <p>Genre: Action</p>
-            <p>Cast: Actor 1, Actor 2, Actor 3</p>
-            <p>Director: Director Name</p>
-            <p>Release Date: January 1, 2024</p>
-            <div>
-              <span
-                class="hover-speech"
-                onmouseover="speakText(this.textContent)"
-              >
-                Hello World</span
-              >
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 mb-3">
-              <div class="card blue-card">
-                <div class="card-body">Card 1 Content</div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card blue-card">
-                <div class="card-body">Card 2 Content</div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <div class="card blue-card">
-                <div class="card-body">Card 3 Content</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 table-container">
-          <table class="table table-bordered text-center">
-            <thead>
-              <tr>
-                <th>Column 2</th>
-                <th>Column 3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Data 11</td>
-                <td>Data 12</td>
-              </tr>
-              <tr>
-                <td>Data 21</td>
-                <td>Data 22</td>
-              </tr>
-              <tr>
-                <td>Data 31</td>
-                <td>Data 32</td>
-              </tr>
-              <tr>
-                <td>Data 41</td>
-                <td>Data 42</td>
-              </tr>
-              <tr>
-                <td>Data 51</td>
-                <td>Data 52</td>
-              </tr>
-              <tr>
-                <td>Data 61</td>
-                <td>Data 62</td>
-              </tr>
-              <tr>
-                <td>Data 71</td>
-                <td>Data 72</td>
-              </tr>
-              <tr>
-                <td>Data 81</td>
-                <td>Data 82</td>
-              </tr>
-              <tr>
-                <td>Data 91</td>
-                <td>Data 92</td>
-              </tr>
-              <tr>
-                <td>Data 101</td>
-                <td>Data 102</td>
-              </tr>
-            </tbody>
-          </table>
+    <div class="container-fluid mt-5">
+      <div class="movie-details">
+        <div class="card" style="width: 30rem; margin: auto">
+          <div><img src="image.jpg" alt="Movie Poster" /></div>
+
+          <h2>Movie Title</h2>
+          <p>Genre: Action</p>
+          <p>Cast: Actor 1, Actor 2, Actor 3</p>
+          <p>Director: Director Name</p>
+          <p>Release Date: January 1, 2024</p>
         </div>
       </div>
     </div>
@@ -163,13 +83,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-      function speakText(text) {
-        setTimeout(function () {
-          const utterance = new SpeechSynthesisUtterance(text);
-          window.speechSynthesis.speak(utterance);
-        }, 1000);
-      }
-
       function voiceSearch() {
         const recognition =
           new webkitSpeechRecognition() || new SpeechRecognition();
