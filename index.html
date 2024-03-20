@@ -14,11 +14,18 @@
     />
     <style>
       .movie-details {
+        padding: 20px;
         text-align: center;
       }
       .movie-details img {
         max-width: 100%;
-        height: auto;
+      }
+      .table-container {
+        padding: 20px;
+      }
+      .blue-card {
+        background-color: #007bff;
+        color: #fff;
       }
       .search-form {
         width: 70%;
@@ -32,10 +39,46 @@
       .hover-speech {
         cursor: pointer;
       }
+      .rounded-label {
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #fff;
+        background-color: #808080;
+        border-radius: 1rem; /* Rounded edges */
+        text-decoration: none; /* Remove default underline */
+      }
+      .cardDiv {
+        position: relative;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        border-radius: 10px;
+        background: #fff;
+      }
+      .btnDiv {
+        border: 0;
+        padding: 10px 32px;
+        color: #0880e8;
+        transition: 0.4s;
+        border-radius: 50px;
+        border: 2px solid #0880e8;
+        background: #fff;
+      }
+      #body-style {
+        font-family: "Lucida Console", "Courier New", monospace;
+        background-color: #eeeeee; /* Add background color here */
+      }
+      #card-style {
+        /* Add card color here */
+      }
+      #table-style {
+        /* Add table color here */
+      }
     </style>
   </head>
-  <body>
-    <nav class="navbar navbar-light bg-light">
+  <body id="body-style">
+    <nav class="navbar navbar-light">
       <div class="container">
         <form
           class="form-inline search-form"
@@ -55,7 +98,6 @@
             onclick="voiceSearch()"
           >
             <i class="fas fa-microphone-alt"></i>
-            <!-- Font Awesome microphone icon -->
           </button>
           <div class="dropdown-divider"></div>
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
@@ -64,17 +106,152 @@
         </form>
       </div>
     </nav>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 movie-details">
+          <div class="card cardDiv" id="assignHeightToCard">
+            <div class="row p-2">
+              <div class="col-6">
+                <img src="image.jpg" alt="Movie Poster" />
+              </div>
+              <div class="col-6">
+                <h2>Movie Title</h2>
+                <p>Genre: Action</p>
+                <p>Cast: Actor 1, Actor 2, Actor 3</p>
+                <p>Director: Director Name</p>
+                <p>Release Date: January 1, 2024</p>
+              </div>
+            </div>
 
-    <div class="container-fluid mt-5">
-      <div class="movie-details">
-        <div class="card" style="width: 30rem; margin: auto">
-          <div><img src="image.jpg" alt="Movie Poster" /></div>
+            <div class="mt-2">
+              <div class="d-flex justify-content-between">
+                <div class="mb-3 mt-3">
+                  <div class="btnDiv">Input Text 1</div>
+                </div>
+                <div class="mb-3 mt-3">
+                  <div class="btnDiv">Input Text 2</div>
+                </div>
+                <div class="mb-3 mt-3">
+                  <div class="btnDiv">Input Text 3</div>
+                </div>
+              </div>
+            </div>
 
-          <h2>Movie Title</h2>
-          <p>Genre: Action</p>
-          <p>Cast: Actor 1, Actor 2, Actor 3</p>
-          <p>Director: Director Name</p>
-          <p>Release Date: January 1, 2024</p>
+            <div class="container">
+              <div
+                class="btnDiv m-3"
+                type="button"
+                data-toggle="collapse"
+                data-target="#descriptionContent"
+                aria-expanded="false"
+                aria-controls="descriptionContent"
+              >
+                <span> Show Description</span>
+              </div>
+              <div class="collapse" id="descriptionContent">
+                <div
+                  class="card card-body collapse-content mb-3 hover-speech cardDiv"
+                  onmouseenter="speakText(this.textContent)"
+                  onmouseleave="stopSpeaking()"
+                >
+                  "Interstellar" is a visually stunning science fiction film
+                  directed by Christopher Nolan. Set in a dystopian future, it
+                  follows a group of astronauts who embark on a space mission
+                  through a newly discovered wormhole in search of a new
+                  habitable planet for humanity. The film explores complex
+                  themes such as love, time dilation, and the survival of the
+                  human race, captivating audiences with its breathtaking
+                  visuals and thought-provoking narrative. With stellar
+                  performances from actors like Matthew McConaughey and Anne
+                  Hathaway, "Interstellar" is a cinematic masterpiece that
+                  pushes the boundaries of storytelling and science fiction
+                  filmmaking.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 table-container">
+          <div class="card cardDiv getCardHeight" id="card-style">
+            <table
+              class="table-sm table-striped table-bordered text-center"
+              style="box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1)"
+              id="table-style"
+            >
+              <thead>
+                <tr>
+                  <th>CATEGORY</th>
+                  <th>CONTENT DESCRIPTOR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Data 1</th>
+                  <td>Data 2</td>
+                </tr>
+                <tr>
+                  <th>Data 3</th>
+                  <td>Data 4</td>
+                </tr>
+                <tr>
+                  <th>Data 5</th>
+                  <td>Data 6</td>
+                </tr>
+                <tr>
+                  <th>Data 7</th>
+                  <td>Data 8</td>
+                </tr>
+                <tr>
+                  <th>Data 9</th>
+                  <td>Data 10</td>
+                </tr>
+                <tr>
+                  <th>Data 11</th>
+                  <td>Data 12</td>
+                </tr>
+                <tr>
+                  <th>Data 13</th>
+                  <td>Data 14</td>
+                </tr>
+                <tr>
+                  <th>Data 15</th>
+                  <td>Data 16</td>
+                </tr>
+                <tr>
+                  <th>Data 17</th>
+                  <td>Data 18</td>
+                </tr>
+                <tr>
+                  <th>Data 19</th>
+                  <td>Data 20</td>
+                </tr>
+                <tr>
+                  <th>Data 21</th>
+                  <td>Data 22</td>
+                </tr>
+                <tr>
+                  <th>Data 23</th>
+                  <td>Data 24</td>
+                </tr>
+                <tr>
+                  <th>Data 25</th>
+                  <td>Data 26</td>
+                </tr>
+                <tr>
+                  <th>Data 27</th>
+                  <td>Data 28</td>
+                </tr>
+                <tr>
+                  <th>Data 29</th>
+                  <td>Data 30</td>
+                </tr>
+                <tr>
+                  <th>Data 31</th>
+                  <td>Data 32</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -83,6 +260,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+      function speakText(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance);
+      }
+      function stopSpeaking() {
+        window.speechSynthesis.cancel();
+      }
+
       function voiceSearch() {
         const recognition =
           new webkitSpeechRecognition() || new SpeechRecognition();
@@ -98,6 +283,13 @@
           recognition.stop();
         };
       }
+
+      const tableContainerHeight =
+        document.querySelector(".getCardHeight").clientHeight;
+
+      // Assign the height to the assignHeightToCard
+      document.getElementById("assignHeightToCard").style.minHeight =
+        tableContainerHeight + "px";
     </script>
   </body>
 </html>
