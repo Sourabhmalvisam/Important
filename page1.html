@@ -14,11 +14,18 @@
     />
     <style>
       .movie-details {
+        padding: 20px;
         text-align: center;
       }
       .movie-details img {
         max-width: 100%;
-        height: auto;
+      }
+      .table-container {
+        padding: 20px;
+      }
+      .blue-card {
+        background-color: #007bff;
+        color: #fff;
       }
       .search-form {
         width: 70%;
@@ -32,10 +39,46 @@
       .hover-speech {
         cursor: pointer;
       }
+      .rounded-label {
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #fff;
+        background-color: #808080;
+        border-radius: 1rem; /* Rounded edges */
+        text-decoration: none; /* Remove default underline */
+      }
+      .cardDiv {
+        position: relative;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        border-radius: 10px;
+        background: #fff;
+      }
+      .btnDiv {
+        border: 0;
+        padding: 10px 32px;
+        color: #0880e8;
+        transition: 0.4s;
+        border-radius: 50px;
+        border: 2px solid #0880e8;
+        background: #fff;
+      }
+      #body-style {
+        font-family: "Lucida Console", "Courier New", monospace;
+        background-color: #eeeeee; /* Add background color here */
+      }
+      #card-style {
+        /* Add card color here */
+      }
+      #table-style {
+        /* Add table color here */
+      }
     </style>
   </head>
-  <body>
-    <nav class="navbar navbar-light bg-light">
+  <body id="body-style">
+    <nav class="navbar navbar-light">
       <div class="container">
         <form
           class="form-inline search-form"
@@ -55,7 +98,6 @@
             onclick="voiceSearch()"
           >
             <i class="fas fa-microphone-alt"></i>
-            <!-- Font Awesome microphone icon -->
           </button>
           <div class="dropdown-divider"></div>
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
@@ -64,17 +106,27 @@
         </form>
       </div>
     </nav>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="movie-details">
+          <div class="card cardDiv"  style="width: 50rem; margin: auto">
+            <div class="row p-2">
+              <div class="col-6">
+                <img src="image.jpg" alt="Movie Poster" />
+              </div>
+              <div class="col-6" style="text-align: left;">
+                <h2>Movie Title</h2>
+                <p>Genre: Action</p>
+                <p>Cast: Actor 1, Actor 2, Actor 3</p>
+                <p>Director: Director Name</p>
+                <p>Release Date: January 1, 2024</p>                
+              </div>
+              <p class="mt-3">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, unde laborum, quos fugiat ipsam amet sapiente placeat id minima pariatur illo dolorum ullam ducimus modi rem. Doloribus repellat iure doloremque!</p>
+            </div>
 
-    <div class="container-fluid mt-5">
-      <div class="movie-details">
-        <div class="card" style="width: 30rem; margin: auto">
-          <div><img src="image.jpg" alt="Movie Poster" /></div>
 
-          <h2>Movie Title</h2>
-          <p>Genre: Action</p>
-          <p>Cast: Actor 1, Actor 2, Actor 3</p>
-          <p>Director: Director Name</p>
-          <p>Release Date: January 1, 2024</p>
+    
+          </div>
         </div>
       </div>
     </div>
@@ -83,6 +135,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+      function speakText(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance);
+      }
+      function stopSpeaking() {
+        window.speechSynthesis.cancel();
+      }
+
       function voiceSearch() {
         const recognition =
           new webkitSpeechRecognition() || new SpeechRecognition();
